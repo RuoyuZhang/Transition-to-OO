@@ -1,0 +1,35 @@
+//Ruoyu Zhang rz253 Feb 3rd 2016
+//JavaDoc Test
+
+/**
+Instances of this class are monitoring data for a single rhino.
+ */
+public class Rhino{
+    private String name;
+    private int yearOfBirth;
+    private int monOfBirth;
+    private int tag;
+    private char gender;
+    private Rhino mother;
+    private Rhino father;
+    private int numOfChild;
+    
+    /** 
+    * Constructor: a new rhino with name n, birth year y, birth month m, 
+    * and gender g. Its parents are unknown, and it has no children. 
+    * Precondition: n's length is > 0. m is in the range 1..12. 
+    * g is either `M' (for male) or `F' (for female)
+    */
+    private Rhino(String n, int y, int m, char g){
+        name = n;
+        yearOfBirth = y;
+        monOfBirth = m;
+        gender = g;
+    }
+    
+    
+    
+       
+  
+    
+}
