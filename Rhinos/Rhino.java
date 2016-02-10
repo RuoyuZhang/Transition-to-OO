@@ -5,19 +5,26 @@
 Instances of this class are monitoring data for a single rhino.
  */
 public class Rhino{
-    private String name;
-    private int yearOfBirth;
-    private int monOfBirth;
-    private int tag;
-    private char gender;
-    private Rhino mother;
-    private Rhino father;
-    private int numOfChild;
+    private String name; // The name (first, last, and perhaps middle) for this profile;
+                         // This should not be the empty string.             
+    private int yearOfBirth; // This a four-digit number for the profile's born year.
+    private int monOfBirth; // This is month in which the rhino in this profile was born.
+                            // It should be a int in 1..12, with 1 meaning the month of January.
+    private int tag; // This is the number on the rhino's tag. This is an integer ¡Ý 0. 
+                     // If the rhino is not tagged yet, this field contains -1.
+    private char gender; // This must either be 'M' for male or 'F' for female.
+    private Rhino mother;// This is a name of an instance of class Rhino that is the mother 
+                         // of this Rhino object. It is null if this mother is unknown.
+    private Rhino father; // This is a name of an instance of class Rhino that is the father 
+                          // of this Rhino object. It is null if this father is unknown.
+    private int numOfChild; // This is a number that depends on the mother and father fields 
+                            // of other Rhino objects.
+    
     
     /** 
     * Constructor: a new rhino with name n, birth year y, birth month m, 
     * and gender g. Its parents are unknown, and it has no children. 
-    * Precondition: n's length is > 0. m is in the range 1..12. 
+    * Precondition: n's length is gt 0. m is in the range 1..12. 
     * g is either `M' (for male) or `F' (for female)
     */
     public Rhino(String n, int y, int m, char g){
@@ -51,7 +58,7 @@ public class Rhino{
         return gender == 'M' ? true : false;
     }
     
-    /** Yields: this rhino's tag (>= 0) if defined; -1 if it is untagged */
+    /** Yields: this rhino's tag (ge 0) if defined; -1 if it is untagged */
     public int getTag() {
         return tag;
     }
@@ -72,7 +79,7 @@ public class Rhino{
     }
 
     //Part B
-    /** Set the tag for this rhino to i. Precondition: i >= 0 */
+    /** Set the tag for this rhino to i. Precondition: i ge 0 */
     public void setTag(int i) {
         tag = i;
     }
@@ -102,8 +109,8 @@ public class Rhino{
     //PartC
     /** Constructor: a new rhino with name n, birth year y, birth month m, 
       * gender g, identifier id, mother ma, and father pa. 
-      * Precondition: n's length is > 0. m is in the range 1 .. 12. g is either `M' (for male) 
-      * or `F' (for female). tag >= 0 (or -1 if untagged). ma and pa may not be null.
+      * Precondition: n's length is gt 0. m is in the range 1 .. 12. g is either `M' (for male) 
+      * or `F' (for female). tag ge 0 (or -1 if untagged). ma and pa may not be null.
       */
     public Rhino(String n, int y, int m, char g, int tag, Rhino ma, Rhino pa){
         name = n;
@@ -111,12 +118,10 @@ public class Rhino{
         monOfBirth = m;
         gender = g;
         this.tag = tag;
-        mother = ma;
-        father = pa;
+        addMother(ma);
+        addFather(pa);
         
-        ma.addChild();
-        pa.addChild();
-    }
+     }
     
     
     //PartD
@@ -142,7 +147,7 @@ public class Rhino{
     /** Yields: "p and q are not null and p is older than q".
       * Make this function static and write it using the previous isOlder(Rhino) 
       * as a helper method.*/
-    //public boolean isOlder(Rhino p, Rhino q){
-        
-    //}
+    public static boolean isOlder(Rhino p, Rhino q){
+        return ((p.getYear() < q.getYear()) || (p.getYear() == q.getYear() && p.getMonth() < q.getMonth()));
+    }
 }

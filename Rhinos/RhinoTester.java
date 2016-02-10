@@ -85,7 +85,7 @@ public class RhinoTester extends TestCase {
     
     
      /**
-     * A test method to test Part#
+     * A test method to test PartE
      */
     public void testPartE() {
         Rhino R1 = new Rhino("Jack", 2004, 3, 'M');
@@ -97,6 +97,9 @@ public class RhinoTester extends TestCase {
         assertEquals(false, R3.isOlder(R2));
         assertEquals(true, R2.isOlder(R3));
         
-        
+        assertEquals(true, Rhino.isOlder(R1,R2));
+        assertEquals(false, Rhino.isOlder(R2,R1));
+        assertEquals(true, Rhino.isOlder(R2,R3));
+        assertEquals(false, Rhino.isOlder(R3,R2));               
     }
 }
