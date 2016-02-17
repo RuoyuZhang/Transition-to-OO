@@ -141,13 +141,14 @@ public class Rhino{
     //PartE
     /** Yields: "p is not null and this Rhino is older than p".*/
     public boolean isOlder(Rhino p){
-        return ((this.getYear() < p.getYear()) || (this.getYear() == p.getYear() && this.getMonth() < p.getMonth()));
+        return (p != null && ((this.getYear() < p.getYear()) || (this.getYear() == p.getYear() && this.getMonth() < p.getMonth())));
+        
     }
     
     /** Yields: "p and q are not null and p is older than q".
       * Make this function static and write it using the previous isOlder(Rhino) 
       * as a helper method.*/
     public static boolean isOlder(Rhino p, Rhino q){
-        return ((p.getYear() < q.getYear()) || (p.getYear() == q.getYear() && p.getMonth() < q.getMonth()));
+        return (p != null && q != null && ((p.getYear() < q.getYear()) || (p.getYear() == q.getYear() && p.getMonth() < q.getMonth())));
     }
 }

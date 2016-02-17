@@ -91,6 +91,10 @@ public class RhinoTester extends TestCase {
         Rhino R1 = new Rhino("Jack", 2004, 3, 'M');
         Rhino R2 = new Rhino("Daisy", 2005, 4, 'F');
         Rhino R3 = new Rhino("Fatso", 2005, 6, 'M');
+        Rhino b = new Rhino("a", 1, 1, 'M');
+        Rhino c = new Rhino("b", 1999, 2, 'F');
+        Rhino d = new Rhino("c", 1999, 5, 'M');
+        Rhino e = new Rhino("d", 2007, 1, 'F');
         
         assertEquals(true, R1.isOlder(R2));
         assertEquals(false, R2.isOlder(R1));
@@ -101,5 +105,12 @@ public class RhinoTester extends TestCase {
         assertEquals(false, Rhino.isOlder(R2,R1));
         assertEquals(true, Rhino.isOlder(R2,R3));
         assertEquals(false, Rhino.isOlder(R3,R2));               
+        
+        
+        assertEquals(false, c.isOlder(null)); 
+        assertEquals(false, Rhino.isOlder(null,null));
+        assertEquals(false, Rhino.isOlder(null,e)); 
+        assertEquals(false, Rhino.isOlder(b,null));
+        
     }
 }

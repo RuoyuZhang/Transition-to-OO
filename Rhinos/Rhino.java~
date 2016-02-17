@@ -5,14 +5,21 @@
 Instances of this class are monitoring data for a single rhino.
  */
 public class Rhino{
-    private String name;
-    private int yearOfBirth;
-    private int monOfBirth;
-    private int tag;
-    private char gender;
-    private Rhino mother;
-    private Rhino father;
-    private int numOfChild;
+    private String name; // The name (first, last, and perhaps middle) for this profile;
+                         // This should not be the empty string.             
+    private int yearOfBirth; // This a four-digit number for the profile's born year.
+    private int monOfBirth; // This is month in which the rhino in this profile was born.
+                            // It should be a int in 1..12, with 1 meaning the month of January.
+    private int tag; // This is the number on the rhino's tag. This is an integer ¡Ý 0. 
+                     // If the rhino is not tagged yet, this field contains -1.
+    private char gender; // This must either be 'M' for male or 'F' for female.
+    private Rhino mother;// This is a name of an instance of class Rhino that is the mother 
+                         // of this Rhino object. It is null if this mother is unknown.
+    private Rhino father; // This is a name of an instance of class Rhino that is the father 
+                          // of this Rhino object. It is null if this father is unknown.
+    private int numOfChild; // This is a number that depends on the mother and father fields 
+                            // of other Rhino objects.
+    
     
     /** 
     * Constructor: a new rhino with name n, birth year y, birth month m, 
@@ -134,13 +141,13 @@ public class Rhino{
     //PartE
     /** Yields: "p is not null and this Rhino is older than p".*/
     public boolean isOlder(Rhino p){
-        return ((this.getYear() < p.getYear()) || (this.getYear() == p.getYear() && this.getMonth() < p.getMonth()));
+        return (p == null ? true : ((this.getYear() < p.getYear()) || (this.getYear() == p.getYear() && this.getMonth() < p.getMonth())));
     }
     
     /** Yields: "p and q are not null and p is older than q".
       * Make this function static and write it using the previous isOlder(Rhino) 
       * as a helper method.*/
-    //public boolean isOlder(Rhino p, Rhino q){
-        
-    //}
+    public static boolean isOlder(Rhino p, Rhino q){
+        return ((p.getYear() < q.getYear()) || (p.getYear() == q.getYear() && p.getMonth() < q.getMonth()));
+    }
 }
